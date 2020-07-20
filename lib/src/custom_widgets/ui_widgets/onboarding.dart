@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:easy_order/src/custom_widgets/background_widget.dart';
+import 'package:easy_order/src/custom_widgets/custom_text.dart';
+import 'package:easy_order/src/custom_widgets/screen_navigation.dart';
 import 'package:easy_order/src/custom_widgets/slide_tile.dart';
 import 'package:easy_order/src/data/data.dart';
+import 'package:easy_order/src/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -87,11 +90,10 @@ class _OnBoardingState extends State<OnBoarding> {
                             curve: Curves.linear);
                       },
                       splashColor: Colors.blue[50],
-                      child: Text(
-                        "SKIP",
-                        style: TextStyle(
-                            color: Color(0xFF0074E4),
-                            fontWeight: FontWeight.w600),
+                      child: CustomText(
+                        text: "SKIP",
+                        color: Color(0xFF0074E4),
+                        weight: FontWeight.w600,
                       ),
                     ),
                     Container(
@@ -106,17 +108,15 @@ class _OnBoardingState extends State<OnBoarding> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        print("this is slideIndex: $slideIndex");
                         controller.animateToPage(slideIndex + 1,
                             duration: Duration(milliseconds: 500),
                             curve: Curves.linear);
                       },
                       splashColor: Colors.blue[50],
-                      child: Text(
-                        "NEXT",
-                        style: TextStyle(
-                            color: Color(0xFF0074E4),
-                            fontWeight: FontWeight.w600),
+                      child: CustomText(
+                        text: "NEXT",
+                        color: Color(0xFF0074E4),
+                        weight: FontWeight.w600,
                       ),
                     ),
                   ],
@@ -124,16 +124,16 @@ class _OnBoardingState extends State<OnBoarding> {
               )
             : InkWell(
                 onTap: () {
-                  print("Get Started Now");
+                  changeScreenReplacement(context, WelcomePage());
                 },
                 child: Container(
                   height: Platform.isIOS ? 70 : 60,
                   color: Colors.blue,
                   alignment: Alignment.center,
-                  child: Text(
-                    "GET STARTED NOW",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w600),
+                  child: CustomText(
+                    text: "GET STARTED NOW",
+                    color: Colors.white,
+                    weight: FontWeight.w600,
                   ),
                 ),
               ),
